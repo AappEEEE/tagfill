@@ -1,0 +1,44 @@
+<Window x:Class="TagFill.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="补齐元数据 (FLAC / MP3)" Height="600" Width="880"
+        WindowStartupLocation="CenterScreen" Background="#F5F5F5">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="PickButton" Content="选择音频文件" Padding="16,8" Click="PickButton_Click"
+                    Background="#0067C0" Foreground="White" BorderThickness="0"
+                    FontWeight="SemiBold" Cursor="Hand"/>
+            <Button x:Name="StartButton" Content="开始补齐" Padding="16,8" Margin="8,0,0,0"
+                    Click="StartButton_Click" IsEnabled="False"
+                    Background="#107C10" Foreground="White" BorderThickness="0"
+                    FontWeight="SemiBold" Cursor="Hand"/>
+            <Button x:Name="ClearButton" Content="清空列表" Padding="14,8" Margin="8,0,0,0"
+                    Click="ClearButton_Click"/>
+        </StackPanel>
+
+        <DataGrid x:Name="FileList" Grid.Row="1"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False"
+                  HeadersVisibility="Column" GridLinesVisibility="Horizontal"
+                  Background="White" BorderBrush="#DDDDDD" RowHeaderWidth="0"
+                  AlternatingRowBackground="#FAFAFA" RowBackground="White">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="文件" Binding="{Binding File}" Width="250"/>
+                <DataGridTextColumn Header="状态" Binding="{Binding Status}" Width="110"/>
+                <DataGridTextColumn Header="信息" Binding="{Binding Info}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StatusBar Grid.Row="2" Margin="0,8,0,0" Background="Transparent">
+            <StatusBarItem>
+                <TextBlock x:Name="StatusText" Text="就绪（原文件将被原地补齐，请先备份）"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

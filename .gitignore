@@ -1,0 +1,12 @@
+bin/
+obj/
+publish/
+publish2/
+test/
+*.log
+crash.log
+run_*.txt
+out_*.txt
+err_*.txt
+ffmpeg.exe
+ffprobe.exe
